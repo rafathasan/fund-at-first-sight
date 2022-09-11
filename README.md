@@ -36,7 +36,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/amitmerchant1990/electron-markdownify
+$ git clone https://github.com/rafathasan/fund-at-first-sight
 
 # Install dependencies
 $ pip install -r requirements.txt
