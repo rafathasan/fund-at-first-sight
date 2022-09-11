@@ -14,12 +14,12 @@
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
   <a href="#download">Download</a> •
-  <a href="#credits">Credits</a> •
-  <a href="#related">Related</a> •
   <a href="#license">License</a>
 </p>
 
-![screenshot](https://cdn.dribbble.com/users/3898087/screenshots/15281931/media/8a69cd8d3f0dbbd4e48db328c0b88d7a.gif)
+<p align="center">
+<img src="https://cdn.dribbble.com/users/3898087/screenshots/15281931/media/8a69cd8d3f0dbbd4e48db328c0b88d7a.gif" align="center" alt="Markdownify" width="500">
+</p>
 
 ## Key Features
 
@@ -65,5 +65,5 @@ MIT
 
 ---
 
-> GitHub [@rafathasan](https://github.com/rafathasan) &nbsp;&middot;&nbsp;
+> GitHub [@rafathasan](https://github.com/rafathasan)
 
