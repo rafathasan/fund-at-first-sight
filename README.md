@@ -63,7 +63,7 @@ User need to select and highlight the following text with mouse and need to use 
 
 ## Download
 
-You need to download [Chrome Browser](https://www.google.com/chrome/) and [Chrome Driver](https://chromedriver.chromium.org/) in order to run the program.
+You need to download [Chrome Browser](https://www.google.com/chrome/) in order to run the program.
 
 ## Credits
 
