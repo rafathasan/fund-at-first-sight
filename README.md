@@ -45,7 +45,7 @@ $ pip install -r requirements.txt
 $ python main.py
 ```
 
-#Keyboard Shortcuts
+## Keyboard Shortcuts
 User need to select and highlight the following text with mouse and need to use the following key to perform actions.
 
 `a` : Update department name.
