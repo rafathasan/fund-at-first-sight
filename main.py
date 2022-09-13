@@ -31,38 +31,50 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
 # In[ ]:
 
-def search_on_scholar(driver):
-    query = driver.execute_script("return window.getSelection().toString()")
-    driver.get(search_scholar.format(query))
 
-def update_department(driver):
-    department = driver.execute_script("return window.getSelection().toString()")
-    df.loc[i, ["department"]] = department.strip()
+def on_event(driver, df):
+    def search_on_scholar(driver):
+        query = driver.execute_script("return window.getSelection().toString()")
+        driver.get(search_scholar.format(query))
 
-def update_name(driver):
-    name = driver.execute_script("return window.getSelection().toString()")
-    df.loc[i, ["name"]] = name.strip()
+    def update_department(driver, df):
+        department = driver.execute_script("return window.getSelection().toString()")
+        df.loc[i, ["department"]] = department.strip()
+        print(f"department: {department}")
 
-def update_email(driver):
-    email = driver.execute_script("return window.getSelection().toString()")
-    df.loc[i, ["email"]] = email.strip()
+    def update_name(driver, df):
+        name = driver.execute_script("return window.getSelection().toString()")
+        df.loc[i, ["name"]] = name.strip()
+        print(f"name: {name}")
 
-def update_topic(driver):
-    topic = driver.execute_script("return window.getSelection().toString()")
-    df.loc[i, ["topic"]] = topic.strip()
+    def update_email(driver, df):
+        email = driver.execute_script("return window.getSelection().toString()")
+        df.loc[i, ["email"]] = email.strip()
+        print(f"email: {email}")
 
-def on_press(key, driver):
-    print(f"press {key}")
-    if key == Key.esc:
-        return False
-    elif key == "a":
-        update_department(driver)
-    elif key == "s":
-        update_name(driver)
-    elif key == "d":
-        update_email(driver)
-    elif key == "f":
-        update_topic(driver)
+    def update_topic(driver, df):
+        topic = driver.execute_script("return window.getSelection().toString()")
+        df.loc[i, ["topic"]] = topic.strip()
+        print(f"topic: {topic}")
+        
+    def on_press(key):
+        try:
+            if key == Key.esc:
+                return False
+            elif key.char == "a":
+                update_department(driver, df)
+            elif key.char == "s":
+                update_name(driver, df)
+            elif key.char == "d":
+                update_email(driver, df)
+            elif key.char == "f":
+                update_topic(driver, df)
+            elif key.char == "z":
+                search_on_scholar(driver)
+        except:
+            pass
+
+    return on_press
 
 def on_release(key):
     if key == keyboard.Key.esc:
@@ -79,7 +91,7 @@ for i in range(len(df)):
     query = df.loc[i, ["university"]].item()
     driver.get(search_university.format(query))
 
-    with keyboard.Listener(on_press=lambda key: on_press(key, driver)) as listener:
+    with keyboard.Listener(on_press=on_event(driver, df)) as listener:
         listener.join()
 
     for handle in driver.window_handles:
