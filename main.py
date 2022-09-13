@@ -10,8 +10,8 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import pathlib
 import sys
-import keyboard
-
+from pynput import keyboard
+from pynput.keyboard import Key
 from utils import parse_config, parse_df
 
 config = parse_config()
@@ -52,6 +52,23 @@ def update_topic(driver):
     topic = driver.execute_script("return window.getSelection().toString()")
     df.loc[i, ["topic"]] = topic.strip()
 
+def on_press(key, driver):
+    print(f"press {key}")
+    if key == Key.esc:
+        return False
+    elif key == "a":
+        update_department(driver)
+    elif key == "s":
+        update_name(driver)
+    elif key == "d":
+        update_email(driver)
+    elif key == "f":
+        update_topic(driver)
+
+def on_release(key):
+    if key == keyboard.Key.esc:
+        return False
+
 init_handle = driver.current_window_handle
 
 for i in range(len(df)):
@@ -63,14 +80,8 @@ for i in range(len(df)):
     query = df.loc[i, ["university"]].item()
     driver.get(search_university.format(query))
 
-    keyboard.read_key()
-    keyboard.add_hotkey("z", search_on_scholar, args=(driver,))
-    keyboard.add_hotkey("a", update_department, args=(driver,))
-    keyboard.add_hotkey("s", update_name, args=(driver,))
-    keyboard.add_hotkey("d", update_email, args=(driver,))
-    keyboard.add_hotkey("f", update_topic, args=(driver,))
-
-    keyboard.wait("esc")
+    with keyboard.Listener(on_press=lambda key: on_press(key, driver)) as listener:
+        listener.join()
 
     for handle in driver.window_handles:
         driver.switch_to.window(handle)
