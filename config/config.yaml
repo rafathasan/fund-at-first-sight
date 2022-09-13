@@ -1,7 +1,5 @@
 search:
   - url: https://www.google.com/search?q={}
   - url: https://scholar.google.com/scholar?q={}
-driver:
-  path: "driver/chromedriver"
 directory:
   path: "data/directory.txt"

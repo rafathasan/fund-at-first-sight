@@ -6,6 +6,8 @@
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import pathlib
 import sys
 import keyboard
@@ -25,7 +27,7 @@ data_path = config["directory"]["path"]
 
 df = parse_df(data_path)
 
-driver = webdriver.Chrome(driver_path)
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
 
 # In[ ]:
