@@ -22,7 +22,6 @@ config = parse_config()
 
 search_university = config["search"][0]["url"]
 search_scholar = config["search"][1]["url"]
-driver_path = config["driver"]["path"]
 data_path = config["directory"]["path"]
 
 df = parse_df(data_path)
