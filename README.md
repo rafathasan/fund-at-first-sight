@@ -45,6 +45,21 @@ $ pip install -r requirements.txt
 $ python main.py
 ```
 
+#Keyboard Shortcuts
+User need to select and highlight the following text with mouse and need to use the following key to perform actions.
+
+`a` : Update department name.
+
+`s` : Update professor name.
+
+`d` : Update email address.
+
+`z` : Update seach on google scholar.
+
+`f` : Update field of research.
+
+`esc` : Save and search next Univercity.
+
 
 ## Download
 
