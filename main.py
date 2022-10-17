@@ -103,3 +103,4 @@ for i in range(len(df)):
 
 
     df.to_csv(data_path, index=False)
+driver.close()
